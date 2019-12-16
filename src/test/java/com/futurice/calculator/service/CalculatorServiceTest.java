@@ -16,7 +16,7 @@ public class CalculatorServiceTest {
 
     public CalculatorServiceTest() {
     }
-    
+
     CalculatorService calculatorService = new CalculatorService();
 
     @org.junit.Test

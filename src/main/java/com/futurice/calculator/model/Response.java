@@ -16,12 +16,12 @@ public class Response {
 
     Boolean error;
     String message;
-    double result;
+    Double result;
 
     public Response() {
     }
 
-    public Response(double result) {
+    public Response(Double result) {
         this.result = result;
     }
 
@@ -41,11 +41,11 @@ public class Response {
         this.message = message;
     }
 
-    public double getResult() {
+    public Double getResult() {
         return result;
     }
 
-    public void setResult(double result) {
+    public void setResult(Double result) {
         this.result = result;
     }
 
