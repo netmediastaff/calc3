@@ -39,6 +39,8 @@ public class CalculatorService {
             // Stack for Operators: 'ops' 
             Stack<Character> ops = new Stack<>();
 
+            Character lastPush = 'n';
+
             for (int i = 0; i < tokens.length; i++) {
                 // Current token is a whitespace, skip it 
                 if (tokens[i] == ' ') {
@@ -55,8 +57,12 @@ public class CalculatorService {
                     i--;
 
                     values.push(Double.parseDouble(sbuf.toString()));
+                    lastPush = 'v';
                 } // Current token is an opening brace, push it to 'ops' 
                 else if (tokens[i] == '(') {
+                    if (lastPush == 'v') {
+                        ops.push('*');
+                    }
                     ops.push(tokens[i]);
                 } // Closing brace encountered, solve entire brace 
                 else if (tokens[i] == ')') {
@@ -76,6 +82,7 @@ public class CalculatorService {
 
                     // Push current token to 'ops'. 
                     ops.push(tokens[i]);
+                    lastPush = 'o';
                 } else {
                     response.setError(true);
                     response.setMessage("Unsupported operation found : " + tokens[i]);
